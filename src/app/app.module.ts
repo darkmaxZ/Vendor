@@ -5,7 +5,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
   MatButtonModule, MatSidenavModule, MatIconModule,
-  MatMenuModule, MatListModule, MatToolbarModule
+  MatMenuModule, MatGridListModule, MatToolbarModule,
+  MatPaginatorModule, MatProgressSpinnerModule, MatFormFieldModule,
+  MatSelectModule, MatInputModule
 } from '@angular/material';
 import { SlickModule } from 'ngx-slick';
 import { RootComponent } from './components/root/root.component';
@@ -17,6 +19,8 @@ import { ShopComponent } from './components/shop/shop.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { HomeComponent } from './components/home/home.component';
+import { SearchComponent } from './components/search/search.component';
+import { SearchService } from './services/search.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -26,6 +30,7 @@ const appRoutes: Routes = [
   { path: 'shop', component: ShopComponent },
   { path: 'cart', component: CartComponent },
   { path: 'contacts', component: ContactsComponent },
+  { path: 'shop/search', component: SearchComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
@@ -39,7 +44,8 @@ const appRoutes: Routes = [
     ShopComponent,
     CartComponent,
     ContactsComponent,
-    HomeComponent
+    HomeComponent,
+    SearchComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -47,13 +53,18 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule,
+    MatGridListModule,
     MatToolbarModule,
     BrowserAnimationsModule,
     FormsModule,
-    SlickModule.forRoot()
+    SlickModule.forRoot(),
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule
   ],
-  providers: [],
+  providers: [SearchService],
   bootstrap: [RootComponent]
 })
 export class AppModule { }

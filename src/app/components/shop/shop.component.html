@@ -1,3 +1,28 @@
-<p>
-  shop works!
-</p>
+<header class="search-panel">
+  <button routerLink="/shop/search" mat-button>
+      Поиск <mat-icon>search</mat-icon>
+  </button>
+</header>
+
+<main>
+  <ng-template #listLoading>
+      <div class="loading">
+          <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+      </div>
+  </ng-template>
+
+  <mat-grid-list cols="3" rowHeight="2:1" *ngIf="!loading; else listLoading">
+      <mat-grid-tile *ngFor="let item of itemList" routerLink="/shop/description/{{item.id}}" routerLinkActive="selected">
+          <div>
+              <p><img src={{item.imageUrl}}></p>
+              <p class="name-id-field">Название: {{item.name}}</p>
+              <p class="name-id-field">В наличии: {{item.quantity}} шт.</p>
+              <p class="name-id-field">Цена: {{item.price}} руб.</p>
+          </div>
+      </mat-grid-tile>
+  </mat-grid-list>
+</main>
+
+<footer>
+  <mat-paginator [length]="pageLength" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="handlePageEvent($event)"></mat-paginator>
+</footer>

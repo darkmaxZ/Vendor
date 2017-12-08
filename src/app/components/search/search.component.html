@@ -1,0 +1,31 @@
+<div class="filters-block">
+    <mat-grid-list cols="2" rows="4" rowHeight="80px">
+
+        <mat-grid-tile>Цена</mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+
+        <mat-grid-tile>От</mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field class="price-input">
+                <input matInput color="primary" #priceFrom="ngModel" [(ngModel)]="itemFilters.from" placeholder="Введите цену">
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>До</mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field class="price-input">
+                <input matInput color="primary" #priceTo="ngModel" [(ngModel)]="itemFilters.to" placeholder="Введите цену">
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>Категория</mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field class="selectors">
+                <mat-select [(ngModel)]="itemFilters.categories" multiple placeholder="Выберите категорию">
+                    <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+

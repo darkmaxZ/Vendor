@@ -1,9 +1,7 @@
 <div class="slider-widget">
-    <button type="button" class="slick-prev"></button>
     <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
         <div ngxSlickItem class="slide" *ngFor="let slide of slides" class="slide">
               <img src="{{slide.img}}">
         </div>
     </ngx-slick>
-    <button type="button" class="slick-next"></button>
 </div>
